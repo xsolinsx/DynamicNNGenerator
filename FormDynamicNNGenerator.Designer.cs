@@ -59,6 +59,9 @@
             // 
             // numericUpDown_BitsOfParity
             // 
+            this.numericUpDown_BitsOfParity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown_BitsOfParity.Location = new System.Drawing.Point(83, 28);
             this.numericUpDown_BitsOfParity.Maximum = new decimal(new int[] {
             26,
@@ -82,6 +85,8 @@
             // 
             // button_GeneratePattern
             // 
+            this.button_GeneratePattern.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_GeneratePattern.Location = new System.Drawing.Point(158, 19);
             this.button_GeneratePattern.Name = "button_GeneratePattern";
             this.button_GeneratePattern.Size = new System.Drawing.Size(75, 35);
@@ -92,6 +97,8 @@
             // 
             // label_BitsOfParity
             // 
+            this.label_BitsOfParity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label_BitsOfParity.AutoSize = true;
             this.label_BitsOfParity.Location = new System.Drawing.Point(6, 30);
             this.label_BitsOfParity.Name = "label_BitsOfParity";
@@ -101,6 +108,7 @@
             // 
             // groupBox_Pattern
             // 
+            this.groupBox_Pattern.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_Pattern.Controls.Add(this.button_GeneratePattern);
             this.groupBox_Pattern.Controls.Add(this.numericUpDown_BitsOfParity);
             this.groupBox_Pattern.Controls.Add(this.label_BitsOfParity);
@@ -113,6 +121,8 @@
             // 
             // groupBox_Network
             // 
+            this.groupBox_Network.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_Network.Controls.Add(this.label_To);
             this.groupBox_Network.Controls.Add(this.label_From);
             this.groupBox_Network.Controls.Add(this.checkBox_RandomWeights);
@@ -134,6 +144,7 @@
             // 
             // label_To
             // 
+            this.label_To.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label_To.AutoSize = true;
             this.label_To.Location = new System.Drawing.Point(120, 126);
             this.label_To.Name = "label_To";
@@ -143,6 +154,7 @@
             // 
             // label_From
             // 
+            this.label_From.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label_From.AutoSize = true;
             this.label_From.Location = new System.Drawing.Point(120, 100);
             this.label_From.Name = "label_From";
@@ -152,6 +164,7 @@
             // 
             // checkBox_RandomWeights
             // 
+            this.checkBox_RandomWeights.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox_RandomWeights.AutoSize = true;
             this.checkBox_RandomWeights.Location = new System.Drawing.Point(6, 111);
             this.checkBox_RandomWeights.Name = "checkBox_RandomWeights";
@@ -163,6 +176,7 @@
             // 
             // textBox_From
             // 
+            this.textBox_From.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_From.Enabled = false;
             this.textBox_From.Location = new System.Drawing.Point(162, 97);
             this.textBox_From.Name = "textBox_From";
@@ -173,6 +187,7 @@
             // 
             // textBox_To
             // 
+            this.textBox_To.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_To.Enabled = false;
             this.textBox_To.Location = new System.Drawing.Point(162, 123);
             this.textBox_To.Name = "textBox_To";
@@ -183,6 +198,7 @@
             // 
             // button_GenerateNetwork
             // 
+            this.button_GenerateNetwork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_GenerateNetwork.Location = new System.Drawing.Point(159, 19);
             this.button_GenerateNetwork.Name = "button_GenerateNetwork";
             this.button_GenerateNetwork.Size = new System.Drawing.Size(75, 72);
@@ -193,6 +209,8 @@
             // 
             // numericUpDown_OutputUnits
             // 
+            this.numericUpDown_OutputUnits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown_OutputUnits.Location = new System.Drawing.Point(84, 71);
             this.numericUpDown_OutputUnits.Maximum = new decimal(new int[] {
             -1,
@@ -225,6 +243,8 @@
             // 
             // numericUpDown_HiddenUnits
             // 
+            this.numericUpDown_HiddenUnits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown_HiddenUnits.Location = new System.Drawing.Point(84, 45);
             this.numericUpDown_HiddenUnits.Maximum = new decimal(new int[] {
             -1,
@@ -252,6 +272,8 @@
             // 
             // numericUpDown_InputUnits
             // 
+            this.numericUpDown_InputUnits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown_InputUnits.Location = new System.Drawing.Point(84, 19);
             this.numericUpDown_InputUnits.Maximum = new decimal(new int[] {
             -1,
@@ -292,6 +314,7 @@
             // 
             // progressBar_PatternComputation
             // 
+            this.progressBar_PatternComputation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar_PatternComputation.Location = new System.Drawing.Point(12, 264);
             this.progressBar_PatternComputation.Name = "progressBar_PatternComputation";
             this.progressBar_PatternComputation.Size = new System.Drawing.Size(240, 23);
@@ -306,6 +329,8 @@
             // 
             // progressBar_NetworkComputation
             // 
+            this.progressBar_NetworkComputation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar_NetworkComputation.Location = new System.Drawing.Point(12, 169);
             this.progressBar_NetworkComputation.Name = "progressBar_NetworkComputation";
             this.progressBar_NetworkComputation.Size = new System.Drawing.Size(240, 23);

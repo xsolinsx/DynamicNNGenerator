@@ -49,8 +49,15 @@ namespace DynamicNNGenerator
                 Regex regexWeights = new Regex("^[+-]?[0-9]*[\\.\\,]?[0-9]+$");
                 if (regexWeights.IsMatch(textBox_From.Text) && regexWeights.IsMatch(textBox_To.Text))
                 {
-                    min = Convert.ToDouble(textBox_From.Text);
-                    max = Convert.ToDouble(textBox_To.Text);
+                    min = Convert.ToDouble(textBox_From.Text.Replace(',', '.'));
+                    max = Convert.ToDouble(textBox_To.Text.Replace(',', '.'));
+                    if (min > max)
+                    {
+                        MessageBox.Show("Incorrect input.\n\"From\" value must be lower than / equal to \"To\" value.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        textBox_From.Text = "-1.0";
+                        textBox_To.Text = "1.0";
+                        return;
+                    }
                 }
                 else
                 {
@@ -66,9 +73,9 @@ namespace DynamicNNGenerator
             numericUpDown_InputUnits.Enabled = false;
             numericUpDown_HiddenUnits.Enabled = false;
             numericUpDown_OutputUnits.Enabled = false;
+            checkBox_RandomWeights.Enabled = false;
             textBox_From.Enabled = false;
             textBox_To.Enabled = false;
-            checkBox_RandomWeights.Enabled = false;
             button_GenerateNetwork.Enabled = false;
             backgroundWorker_NetworkComputation.RunWorkerAsync(new double[2] { min, max });
         }
@@ -175,16 +182,19 @@ namespace DynamicNNGenerator
         }
 
         private void backgroundWorker_NetworkComputation_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        { progressBar_NetworkComputation.Value = e.ProgressPercentage; }
+        { progressBar_NetworkComputation.Value = e.ProgressPercentage > 100 ? 100 : e.ProgressPercentage; }
 
         private void backgroundWorker_NetworkComputation_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             numericUpDown_InputUnits.Enabled = true;
             numericUpDown_HiddenUnits.Enabled = true;
             numericUpDown_OutputUnits.Enabled = true;
-            textBox_From.Enabled = true;
-            textBox_To.Enabled = true;
             checkBox_RandomWeights.Enabled = true;
+            if (checkBox_RandomWeights.Checked)
+            {
+                textBox_From.Enabled = true;
+                textBox_To.Enabled = true;
+            }
             button_GenerateNetwork.Enabled = true;
         }
 
@@ -279,7 +289,7 @@ namespace DynamicNNGenerator
         }
 
         private void backgroundWorker_PatternComputation_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        { progressBar_PatternComputation.Value = e.ProgressPercentage; }
+        { progressBar_PatternComputation.Value = e.ProgressPercentage > 100 ? 100 : e.ProgressPercentage; }
 
         private void backgroundWorker_PatternComputation_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
