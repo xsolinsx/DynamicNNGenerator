@@ -45,6 +45,10 @@
             this.label_HiddenUnits = new System.Windows.Forms.Label();
             this.numericUpDown_InputUnits = new System.Windows.Forms.NumericUpDown();
             this.label_InputUnits = new System.Windows.Forms.Label();
+            this.backgroundWorker_PatternComputation = new System.ComponentModel.BackgroundWorker();
+            this.progressBar_PatternComputation = new System.Windows.Forms.ProgressBar();
+            this.backgroundWorker_NetworkComputation = new System.ComponentModel.BackgroundWorker();
+            this.progressBar_NetworkComputation = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BitsOfParity)).BeginInit();
             this.groupBox_Pattern.SuspendLayout();
             this.groupBox_Network.SuspendLayout();
@@ -100,7 +104,7 @@
             this.groupBox_Pattern.Controls.Add(this.button_GeneratePattern);
             this.groupBox_Pattern.Controls.Add(this.numericUpDown_BitsOfParity);
             this.groupBox_Pattern.Controls.Add(this.label_BitsOfParity);
-            this.groupBox_Pattern.Location = new System.Drawing.Point(12, 169);
+            this.groupBox_Pattern.Location = new System.Drawing.Point(12, 198);
             this.groupBox_Pattern.Name = "groupBox_Pattern";
             this.groupBox_Pattern.Size = new System.Drawing.Size(240, 60);
             this.groupBox_Pattern.TabIndex = 7;
@@ -279,11 +283,41 @@
             this.label_InputUnits.TabIndex = 4;
             this.label_InputUnits.Text = "Input units: ";
             // 
+            // backgroundWorker_PatternComputation
+            // 
+            this.backgroundWorker_PatternComputation.WorkerReportsProgress = true;
+            this.backgroundWorker_PatternComputation.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_PatternComputation_DoWork);
+            this.backgroundWorker_PatternComputation.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_PatternComputation_ProgressChanged);
+            this.backgroundWorker_PatternComputation.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_PatternComputation_RunWorkerCompleted);
+            // 
+            // progressBar_PatternComputation
+            // 
+            this.progressBar_PatternComputation.Location = new System.Drawing.Point(12, 264);
+            this.progressBar_PatternComputation.Name = "progressBar_PatternComputation";
+            this.progressBar_PatternComputation.Size = new System.Drawing.Size(240, 23);
+            this.progressBar_PatternComputation.TabIndex = 9;
+            // 
+            // backgroundWorker_NetworkComputation
+            // 
+            this.backgroundWorker_NetworkComputation.WorkerReportsProgress = true;
+            this.backgroundWorker_NetworkComputation.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_NetworkComputation_DoWork);
+            this.backgroundWorker_NetworkComputation.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_NetworkComputation_ProgressChanged);
+            this.backgroundWorker_NetworkComputation.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_NetworkComputation_RunWorkerCompleted);
+            // 
+            // progressBar_NetworkComputation
+            // 
+            this.progressBar_NetworkComputation.Location = new System.Drawing.Point(12, 169);
+            this.progressBar_NetworkComputation.Name = "progressBar_NetworkComputation";
+            this.progressBar_NetworkComputation.Size = new System.Drawing.Size(240, 23);
+            this.progressBar_NetworkComputation.TabIndex = 10;
+            // 
             // FormDynamicNNGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 241);
+            this.ClientSize = new System.Drawing.Size(264, 299);
+            this.Controls.Add(this.progressBar_NetworkComputation);
+            this.Controls.Add(this.progressBar_PatternComputation);
             this.Controls.Add(this.groupBox_Network);
             this.Controls.Add(this.groupBox_Pattern);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -321,6 +355,10 @@
         private System.Windows.Forms.CheckBox checkBox_RandomWeights;
         private System.Windows.Forms.TextBox textBox_From;
         private System.Windows.Forms.TextBox textBox_To;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_PatternComputation;
+        private System.Windows.Forms.ProgressBar progressBar_PatternComputation;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_NetworkComputation;
+        private System.Windows.Forms.ProgressBar progressBar_NetworkComputation;
 
     }
 }

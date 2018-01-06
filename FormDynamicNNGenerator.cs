@@ -63,6 +63,21 @@ namespace DynamicNNGenerator
                 min = 0;
                 max = 0;
             }
+            numericUpDown_InputUnits.Enabled = false;
+            numericUpDown_HiddenUnits.Enabled = false;
+            numericUpDown_OutputUnits.Enabled = false;
+            textBox_From.Enabled = false;
+            textBox_To.Enabled = false;
+            checkBox_RandomWeights.Enabled = false;
+            button_GenerateNetwork.Enabled = false;
+            backgroundWorker_NetworkComputation.RunWorkerAsync(new double[2] { min, max });
+        }
+
+        private void backgroundWorker_NetworkComputation_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            ulong progress = 0;
+            ulong maxProgress = Convert.ToUInt64(numericUpDown_InputUnits.Value * 3 + numericUpDown_HiddenUnits.Value * 3 + numericUpDown_OutputUnits.Value * 2 - (numericUpDown_InputUnits.Value + 1) - (numericUpDown_InputUnits.Value + numericUpDown_HiddenUnits.Value + 1));
+            double min = ((double[])e.Argument)[0], max = ((double[])e.Argument)[1];
             string FileName = "evenOdd-" + DateTime.UtcNow.ToFileTime() + "-Network" + numericUpDown_InputUnits.Value + "I" + numericUpDown_HiddenUnits.Value + "H" + numericUpDown_OutputUnits.Value + "O.net";
 
             try
@@ -96,18 +111,24 @@ namespace DynamicNNGenerator
                 {
                     SW.WriteLine(" " + iTot + " |          | noName   |  0.00000 | " + (rnd.NextDouble() * (max - min) + min) + " | i  | " + i + ", 1, 1 |||");
                     iTot++;
+                    progress++;
+                    backgroundWorker_NetworkComputation.ReportProgress(Convert.ToInt32((progress * 100) / maxProgress));
                 }
                 //write hidden units
                 for (decimal i = 1; i <= numericUpDown_HiddenUnits.Value; i++)
                 {
                     SW.WriteLine(" " + iTot + " |          | noName   |  0.00000 | " + (rnd.NextDouble() * (max - min) + min) + " | h  | " + i + ", 2, 1 |||");
                     iTot++;
+                    progress++;
+                    backgroundWorker_NetworkComputation.ReportProgress(Convert.ToInt32((progress * 100) / maxProgress));
                 }
                 //write output units
                 for (decimal i = 1; i <= numericUpDown_OutputUnits.Value; i++)
                 {
                     SW.WriteLine(" " + iTot + " |          | noName   |  0.00000 | " + (rnd.NextDouble() * (max - min) + min) + " | o  | " + i + ", 3, 1 |||");
                     iTot++;
+                    progress++;
+                    backgroundWorker_NetworkComputation.ReportProgress(Convert.ToInt32((progress * 100) / maxProgress));
                 }
                 SW.WriteLine("----|----------|----------|----------|----------|----|----------|----------|----------|-------\n\n");
 
@@ -120,7 +141,11 @@ namespace DynamicNNGenerator
                 {
                     //write units layer 2
                     for (decimal i = (decimal)(numericUpDown_InputUnits.Value + 1); i <= numericUpDown_InputUnits.Value + numericUpDown_HiddenUnits.Value; i++)
+                    {
                         numbers += i + ", ";
+                        progress++;
+                        backgroundWorker_NetworkComputation.ReportProgress(Convert.ToInt32((progress * 100) / maxProgress));
+                    }
                     if (numbers.LastIndexOf(',') > -1)
                         //remove last comma
                         numbers = numbers.Remove(numbers.LastIndexOf(','));
@@ -131,7 +156,11 @@ namespace DynamicNNGenerator
                     numbers = "";
                     //write units layer 3
                     for (decimal i = (decimal)(numericUpDown_InputUnits.Value + numericUpDown_HiddenUnits.Value + 1); i <= numericUpDown_InputUnits.Value + numericUpDown_HiddenUnits.Value + numericUpDown_OutputUnits.Value; i++)
+                    {
                         numbers += i + ", ";
+                        progress++;
+                        backgroundWorker_NetworkComputation.ReportProgress(Convert.ToInt32((progress * 100) / maxProgress));
+                    }
                     if (numbers.LastIndexOf(',') > -1)
                         //remove last comma
                         numbers = numbers.Remove(numbers.LastIndexOf(','));
@@ -142,9 +171,24 @@ namespace DynamicNNGenerator
             }
             catch (Exception ex)
             { MessageBox.Show("Error\n" + ex.Source + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            backgroundWorker_NetworkComputation.ReportProgress(100);
         }
 
-        /* PATTERN EXAMPLE WITH 3 INPUT UNITS
+        private void backgroundWorker_NetworkComputation_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        { progressBar_NetworkComputation.Value = e.ProgressPercentage; }
+
+        private void backgroundWorker_NetworkComputation_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            numericUpDown_InputUnits.Enabled = true;
+            numericUpDown_HiddenUnits.Enabled = true;
+            numericUpDown_OutputUnits.Enabled = true;
+            textBox_From.Enabled = true;
+            textBox_To.Enabled = true;
+            checkBox_RandomWeights.Enabled = true;
+            button_GenerateNetwork.Enabled = true;
+        }
+
+        /* PATTERN EXAMPLE
          * 0 EVEN
          * 1 ODD
          * I1   I2  I3  RESULT
@@ -164,7 +208,16 @@ namespace DynamicNNGenerator
                 if (MessageBox.Show("This is a high number, the process can take a lot while computing and writing 2^" + numericUpDown_BitsOfParity.Value + " training patterns, do you really want to continue?.", "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     return;
             }
+            numericUpDown_BitsOfParity.Enabled = false;
+            button_GeneratePattern.Enabled = false;
+            backgroundWorker_PatternComputation.RunWorkerAsync();
+        }
+
+        private void backgroundWorker_PatternComputation_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            ulong progress = 0;
             bool[,] truthTable = new bool[(int)Math.Pow(2.0, (double)numericUpDown_BitsOfParity.Value), (int)numericUpDown_BitsOfParity.Value];
+            ulong maxProgress = Convert.ToUInt64(truthTable.GetLength(0) * truthTable.GetLength(1) * 2);
             int alternateIndex = 0;
             bool valueToWrite;
             //fill the matrix
@@ -186,6 +239,8 @@ namespace DynamicNNGenerator
                     }
                     else
                         rowIndex++;
+                    progress++;
+                    backgroundWorker_PatternComputation.ReportProgress(Convert.ToInt32((progress * 100) / maxProgress));
                 }
                 alternateIndex++;
             }
@@ -210,6 +265,8 @@ namespace DynamicNNGenerator
                         if (truthTable[row, column])
                             activeUnits++;
                         line += Convert.ToInt16(truthTable[row, column]) + " ";
+                        progress++;
+                        backgroundWorker_PatternComputation.ReportProgress(Convert.ToInt32((progress * 100) / maxProgress));
                     }
                     SW.WriteLine(line);
                     SW.WriteLine(activeUnits % 2);
@@ -218,6 +275,16 @@ namespace DynamicNNGenerator
             }
             catch (Exception ex)
             { MessageBox.Show("Error\n" + ex.Source + "\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            backgroundWorker_PatternComputation.ReportProgress(100);
+        }
+
+        private void backgroundWorker_PatternComputation_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        { progressBar_PatternComputation.Value = e.ProgressPercentage; }
+
+        private void backgroundWorker_PatternComputation_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            numericUpDown_BitsOfParity.Enabled = true;
+            button_GeneratePattern.Enabled = true;
         }
     }
 }
