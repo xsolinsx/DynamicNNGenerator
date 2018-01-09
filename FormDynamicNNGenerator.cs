@@ -8,16 +8,7 @@ namespace DynamicNNGenerator
     public partial class FormDynamicNNGenerator : Form
     {
         public FormDynamicNNGenerator()
-        {
-            InitializeComponent();
-            //making things work like:
-            //numbers are expressed with this notation: X.Y where X is the integer part and Y is the decimal part (if present), no group separator
-            //examples: 100000000.00001     101  1.1     1.123   11111.1     0.1
-            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
-            customCulture.NumberFormat.NumberDecimalSeparator = ".";
-            customCulture.NumberFormat.NumberGroupSeparator = "";
-            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
-        }
+        { InitializeComponent(); }
 
         private void numericUpDowns_ValueChanged(object sender, EventArgs e)
         {
@@ -49,13 +40,13 @@ namespace DynamicNNGenerator
                 Regex regexWeights = new Regex("^[+-]?[0-9]*[\\.\\,]?[0-9]+$");
                 if (regexWeights.IsMatch(textBox_From.Text) && regexWeights.IsMatch(textBox_To.Text))
                 {
-                    min = Convert.ToDouble(textBox_From.Text.Replace(',', '.'));
-                    max = Convert.ToDouble(textBox_To.Text.Replace(',', '.'));
+                    min = Convert.ToDouble(textBox_From.Text);
+                    max = Convert.ToDouble(textBox_To.Text);
                     if (min > max)
                     {
                         MessageBox.Show("Incorrect input.\n\"From\" value must be lower than / equal to \"To\" value.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        textBox_From.Text = "-1.0";
-                        textBox_To.Text = "1.0";
+                        textBox_From.Text = (-1).ToString("0.0");
+                        textBox_To.Text = (1).ToString("0.0");
                         return;
                     }
                 }
@@ -105,7 +96,7 @@ namespace DynamicNNGenerator
                 SW.WriteLine("unit default section :\n");
                 SW.WriteLine("act      | bias     | st | subnet | layer | act func     | out func");
                 SW.WriteLine("---------|----------|----|--------|-------|--------------|-------------");
-                SW.WriteLine(" 0.00000 |  0.00000 | h  |      0 |     1 | Act_Logistic | Out_Identity ");
+                SW.WriteLine(" " + (0).ToString("0.00000") + " |  " + (0).ToString("0.00000") + " | h  |      0 |     1 | Act_Logistic | Out_Identity ");
                 SW.WriteLine("---------|----------|----|--------|-------|--------------|-------------\n\n");
 
                 SW.WriteLine("unit definition section :\n");
@@ -116,7 +107,7 @@ namespace DynamicNNGenerator
                 //write input units
                 for (decimal i = 1; i <= numericUpDown_InputUnits.Value; i++)
                 {
-                    SW.WriteLine(" " + iTot + " |          | noName   |  0.00000 | " + (rnd.NextDouble() * (max - min) + min) + " | i  | " + i + ", 1, 1 |||");
+                    SW.WriteLine(" " + iTot + " |          | noName   |  " + (0).ToString("0.00000") + " | " + (rnd.NextDouble() * (max - min) + min).ToString("0.00000") + " | i  | " + i + ", 1, 1 |||");
                     iTot++;
                     progress++;
                     backgroundWorker_NetworkComputation.ReportProgress(Convert.ToInt32((progress * 100) / maxProgress));
@@ -124,7 +115,7 @@ namespace DynamicNNGenerator
                 //write hidden units
                 for (decimal i = 1; i <= numericUpDown_HiddenUnits.Value; i++)
                 {
-                    SW.WriteLine(" " + iTot + " |          | noName   |  0.00000 | " + (rnd.NextDouble() * (max - min) + min) + " | h  | " + i + ", 2, 1 |||");
+                    SW.WriteLine(" " + iTot + " |          | noName   |  " + (0).ToString("0.00000") + " | " + (rnd.NextDouble() * (max - min) + min).ToString("0.00000") + " | h  | " + i + ", 2, 1 |||");
                     iTot++;
                     progress++;
                     backgroundWorker_NetworkComputation.ReportProgress(Convert.ToInt32((progress * 100) / maxProgress));
@@ -132,7 +123,7 @@ namespace DynamicNNGenerator
                 //write output units
                 for (decimal i = 1; i <= numericUpDown_OutputUnits.Value; i++)
                 {
-                    SW.WriteLine(" " + iTot + " |          | noName   |  0.00000 | " + (rnd.NextDouble() * (max - min) + min) + " | o  | " + i + ", 3, 1 |||");
+                    SW.WriteLine(" " + iTot + " |          | noName   |  " + (0).ToString("0.00000") + " | " + (rnd.NextDouble() * (max - min) + min).ToString("0.00000") + " | o  | " + i + ", 3, 1 |||");
                     iTot++;
                     progress++;
                     backgroundWorker_NetworkComputation.ReportProgress(Convert.ToInt32((progress * 100) / maxProgress));

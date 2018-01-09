@@ -49,6 +49,7 @@
             this.progressBar_PatternComputation = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker_NetworkComputation = new System.ComponentModel.BackgroundWorker();
             this.progressBar_NetworkComputation = new System.Windows.Forms.ProgressBar();
+            this.label_Separator = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BitsOfParity)).BeginInit();
             this.groupBox_Pattern.SuspendLayout();
             this.groupBox_Network.SuspendLayout();
@@ -74,7 +75,7 @@
             0,
             0});
             this.numericUpDown_BitsOfParity.Name = "numericUpDown_BitsOfParity";
-            this.numericUpDown_BitsOfParity.Size = new System.Drawing.Size(69, 20);
+            this.numericUpDown_BitsOfParity.Size = new System.Drawing.Size(141, 20);
             this.numericUpDown_BitsOfParity.TabIndex = 6;
             this.numericUpDown_BitsOfParity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown_BitsOfParity.Value = new decimal(new int[] {
@@ -87,7 +88,7 @@
             // 
             this.button_GeneratePattern.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_GeneratePattern.Location = new System.Drawing.Point(158, 19);
+            this.button_GeneratePattern.Location = new System.Drawing.Point(230, 19);
             this.button_GeneratePattern.Name = "button_GeneratePattern";
             this.button_GeneratePattern.Size = new System.Drawing.Size(75, 35);
             this.button_GeneratePattern.TabIndex = 5;
@@ -112,9 +113,9 @@
             this.groupBox_Pattern.Controls.Add(this.button_GeneratePattern);
             this.groupBox_Pattern.Controls.Add(this.numericUpDown_BitsOfParity);
             this.groupBox_Pattern.Controls.Add(this.label_BitsOfParity);
-            this.groupBox_Pattern.Location = new System.Drawing.Point(12, 198);
+            this.groupBox_Pattern.Location = new System.Drawing.Point(12, 222);
             this.groupBox_Pattern.Name = "groupBox_Pattern";
-            this.groupBox_Pattern.Size = new System.Drawing.Size(240, 60);
+            this.groupBox_Pattern.Size = new System.Drawing.Size(312, 60);
             this.groupBox_Pattern.TabIndex = 7;
             this.groupBox_Pattern.TabStop = false;
             this.groupBox_Pattern.Text = "Pattern";
@@ -135,9 +136,9 @@
             this.groupBox_Network.Controls.Add(this.label_HiddenUnits);
             this.groupBox_Network.Controls.Add(this.numericUpDown_InputUnits);
             this.groupBox_Network.Controls.Add(this.label_InputUnits);
-            this.groupBox_Network.Location = new System.Drawing.Point(12, 12);
+            this.groupBox_Network.Location = new System.Drawing.Point(12, 25);
             this.groupBox_Network.Name = "groupBox_Network";
-            this.groupBox_Network.Size = new System.Drawing.Size(240, 151);
+            this.groupBox_Network.Size = new System.Drawing.Size(312, 151);
             this.groupBox_Network.TabIndex = 8;
             this.groupBox_Network.TabStop = false;
             this.groupBox_Network.Text = "Network";
@@ -146,7 +147,7 @@
             // 
             this.label_To.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label_To.AutoSize = true;
-            this.label_To.Location = new System.Drawing.Point(120, 126);
+            this.label_To.Location = new System.Drawing.Point(192, 126);
             this.label_To.Name = "label_To";
             this.label_To.Size = new System.Drawing.Size(26, 13);
             this.label_To.TabIndex = 11;
@@ -156,7 +157,7 @@
             // 
             this.label_From.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label_From.AutoSize = true;
-            this.label_From.Location = new System.Drawing.Point(120, 100);
+            this.label_From.Location = new System.Drawing.Point(192, 100);
             this.label_From.Name = "label_From";
             this.label_From.Size = new System.Drawing.Size(36, 13);
             this.label_From.TabIndex = 10;
@@ -178,28 +179,28 @@
             // 
             this.textBox_From.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_From.Enabled = false;
-            this.textBox_From.Location = new System.Drawing.Point(162, 97);
+            this.textBox_From.Location = new System.Drawing.Point(234, 97);
             this.textBox_From.Name = "textBox_From";
             this.textBox_From.Size = new System.Drawing.Size(72, 20);
             this.textBox_From.TabIndex = 8;
-            this.textBox_From.Text = "-1.0";
+            this.textBox_From.Text = "-1";
             this.textBox_From.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_To
             // 
             this.textBox_To.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_To.Enabled = false;
-            this.textBox_To.Location = new System.Drawing.Point(162, 123);
+            this.textBox_To.Location = new System.Drawing.Point(234, 123);
             this.textBox_To.Name = "textBox_To";
             this.textBox_To.Size = new System.Drawing.Size(72, 20);
             this.textBox_To.TabIndex = 7;
-            this.textBox_To.Text = "1.0";
+            this.textBox_To.Text = "1";
             this.textBox_To.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button_GenerateNetwork
             // 
             this.button_GenerateNetwork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_GenerateNetwork.Location = new System.Drawing.Point(159, 19);
+            this.button_GenerateNetwork.Location = new System.Drawing.Point(231, 19);
             this.button_GenerateNetwork.Name = "button_GenerateNetwork";
             this.button_GenerateNetwork.Size = new System.Drawing.Size(75, 72);
             this.button_GenerateNetwork.TabIndex = 5;
@@ -223,7 +224,7 @@
             0,
             0});
             this.numericUpDown_OutputUnits.Name = "numericUpDown_OutputUnits";
-            this.numericUpDown_OutputUnits.Size = new System.Drawing.Size(69, 20);
+            this.numericUpDown_OutputUnits.Size = new System.Drawing.Size(141, 20);
             this.numericUpDown_OutputUnits.TabIndex = 6;
             this.numericUpDown_OutputUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown_OutputUnits.Value = new decimal(new int[] {
@@ -252,7 +253,7 @@
             -1,
             0});
             this.numericUpDown_HiddenUnits.Name = "numericUpDown_HiddenUnits";
-            this.numericUpDown_HiddenUnits.Size = new System.Drawing.Size(69, 20);
+            this.numericUpDown_HiddenUnits.Size = new System.Drawing.Size(141, 20);
             this.numericUpDown_HiddenUnits.TabIndex = 6;
             this.numericUpDown_HiddenUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown_HiddenUnits.Value = new decimal(new int[] {
@@ -286,7 +287,7 @@
             0,
             0});
             this.numericUpDown_InputUnits.Name = "numericUpDown_InputUnits";
-            this.numericUpDown_InputUnits.Size = new System.Drawing.Size(69, 20);
+            this.numericUpDown_InputUnits.Size = new System.Drawing.Size(141, 20);
             this.numericUpDown_InputUnits.TabIndex = 6;
             this.numericUpDown_InputUnits.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown_InputUnits.Value = new decimal(new int[] {
@@ -315,9 +316,9 @@
             // progressBar_PatternComputation
             // 
             this.progressBar_PatternComputation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar_PatternComputation.Location = new System.Drawing.Point(12, 264);
+            this.progressBar_PatternComputation.Location = new System.Drawing.Point(12, 288);
             this.progressBar_PatternComputation.Name = "progressBar_PatternComputation";
-            this.progressBar_PatternComputation.Size = new System.Drawing.Size(240, 23);
+            this.progressBar_PatternComputation.Size = new System.Drawing.Size(312, 23);
             this.progressBar_PatternComputation.TabIndex = 9;
             // 
             // backgroundWorker_NetworkComputation
@@ -331,22 +332,33 @@
             // 
             this.progressBar_NetworkComputation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar_NetworkComputation.Location = new System.Drawing.Point(12, 169);
+            this.progressBar_NetworkComputation.Location = new System.Drawing.Point(12, 182);
             this.progressBar_NetworkComputation.Name = "progressBar_NetworkComputation";
-            this.progressBar_NetworkComputation.Size = new System.Drawing.Size(240, 23);
+            this.progressBar_NetworkComputation.Size = new System.Drawing.Size(312, 23);
             this.progressBar_NetworkComputation.TabIndex = 10;
+            // 
+            // label_Separator
+            // 
+            this.label_Separator.Location = new System.Drawing.Point(12, 9);
+            this.label_Separator.Name = "label_Separator";
+            this.label_Separator.Size = new System.Drawing.Size(312, 13);
+            this.label_Separator.TabIndex = 12;
+            this.label_Separator.Text = "Use the appropriate decimal separator according to your culture";
             // 
             // FormDynamicNNGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 299);
+            this.ClientSize = new System.Drawing.Size(336, 323);
+            this.Controls.Add(this.label_Separator);
             this.Controls.Add(this.progressBar_NetworkComputation);
             this.Controls.Add(this.progressBar_PatternComputation);
             this.Controls.Add(this.groupBox_Network);
             this.Controls.Add(this.groupBox_Pattern);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(352, 362);
+            this.MinimumSize = new System.Drawing.Size(352, 362);
             this.Name = "FormDynamicNNGenerator";
             this.Text = "Dynamic NN Generator";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BitsOfParity)).EndInit();
@@ -384,6 +396,7 @@
         private System.Windows.Forms.ProgressBar progressBar_PatternComputation;
         private System.ComponentModel.BackgroundWorker backgroundWorker_NetworkComputation;
         private System.Windows.Forms.ProgressBar progressBar_NetworkComputation;
+        private System.Windows.Forms.Label label_Separator;
 
     }
 }
